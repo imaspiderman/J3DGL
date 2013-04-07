@@ -14,6 +14,10 @@ public class j3d_vector extends j3d_point {
 	}
 	
 	private void calculateLength(){
-		this.length = java.lang.Math.sqrt((this.x*this.x)+(this.y*this.y)+(this.z*this.z));
+		this.length = java.lang.Math.sqrt(
+				j3d_calc.multiply(this.x,this.x)+
+				j3d_calc.multiply(this.y,this.y)+
+				j3d_calc.multiply(this.z,this.z)
+			);
 	}
 }

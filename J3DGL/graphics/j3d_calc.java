@@ -71,7 +71,7 @@ public class j3d_calc {
 	 * @param i2 Second fixed point integer
 	 * @return Fixed point integer
 	 */
-	public static int j3d_multiply(int i1, int i2){		
+	public static int multiply(int i1, int i2){		
 		return (i1*i2)>>j3d_globals.FIXED_POINT_SHITFT;
 	}
 	
@@ -81,7 +81,7 @@ public class j3d_calc {
 	 * @param i2 Second fixed point integer
 	 * @return Fixed point integer
 	 */
-	public static int j3d_divide(int i1, int i2){
+	public static int divide(int i1, int i2){
 		return((i1<<j3d_globals.FIXED_POINT_SHITFT)/i2);
 	}
 }
