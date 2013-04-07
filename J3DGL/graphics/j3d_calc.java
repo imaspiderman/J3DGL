@@ -26,13 +26,11 @@ public class j3d_calc {
 	 * @return Sum of two vectors
 	 */
 	public static j3d_vector add(j3d_vector v1, j3d_vector v2){
-		j3d_vector r = new j3d_vector();
-		
-		r.x = v1.x + v2.x;
-		r.y = v1.y + v2.y;
-		r.z = v1.z + v2.z;
-		r.length = java.lang.Math.sqrt((r.x*r.x)+(r.y*r.y)+(r.z*r.z));
-		
+		j3d_vector r = new j3d_vector(
+					((v1.x+v2.x)>>j3d_globals.FIXED_POINT_SHITFT),
+					((v1.y+v2.y)>>j3d_globals.FIXED_POINT_SHITFT),
+					((v1.z+v2.z)>>j3d_globals.FIXED_POINT_SHITFT)
+				);
 		return r;
 	}
 	
@@ -59,13 +57,31 @@ public class j3d_calc {
 	 * @return The difference of the two vectors
 	 */
 	public static j3d_vector subtract(j3d_vector v1, j3d_vector v2){
-		j3d_vector r = new j3d_vector();
-		
-		r.x = v1.x - v2.x;
-		r.y = v1.y - v2.y;
-		r.z = v1.z - v2.z;
-		r.length = java.lang.Math.sqrt((r.x*r.x)+(r.y*r.y)+(r.z*r.z));
-		
+		j3d_vector r = new j3d_vector(
+				((v1.x-v2.x)>>j3d_globals.FIXED_POINT_SHITFT),
+				((v1.y-v2.y)>>j3d_globals.FIXED_POINT_SHITFT),
+				((v1.z-v2.z)>>j3d_globals.FIXED_POINT_SHITFT)
+			);
 		return r;
+	}
+	
+	/**
+	 * Fixed point multiply of two integers
+	 * @param i1 First fixed point integer
+	 * @param i2 Second fixed point integer
+	 * @return Fixed point integer
+	 */
+	public static int j3d_multiply(int i1, int i2){		
+		return (i1*i2)>>j3d_globals.FIXED_POINT_SHITFT;
+	}
+	
+	/**
+	 * Fixed point divide of two integers
+	 * @param i1 First fixed point integer
+	 * @param i2 Second fixed point integer
+	 * @return Fixed point integer
+	 */
+	public static int j3d_divide(int i1, int i2){
+		return((i1<<j3d_globals.FIXED_POINT_SHITFT)/i2);
 	}
 }
