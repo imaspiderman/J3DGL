@@ -1,14 +1,15 @@
 package graphics;
 
-import java.awt.Polygon;
-
-public class j3d_polygon extends Polygon {
-	private static final long serialVersionUID = 1L;
-	public java.util.LinkedList<j3d_point> points;
+public class j3d_polygon {
+	private j3d_point[] points;
+	private int point = 0;
+	public enum PolygonType{
+		Triangle,Rectangle
+	};
 	
-	public j3d_polygon(){
-		super();
-		points = new java.util.LinkedList<j3d_point>();
+	public j3d_polygon(PolygonType t){
+		if(t == PolygonType.Triangle) this.points = new j3d_point[3];
+		if(t == PolygonType.Rectangle) this.points = new j3d_point[4];
 	}
 	
 	/**
@@ -18,19 +19,25 @@ public class j3d_polygon extends Polygon {
 	 * @param z Non-fixed point z
 	 */
 	public void addPoint(int x, int y, int z){
-		points.add(new j3d_point(x,y,z));
+		if(point == points.length-1) return;
+		
+		points[point] = new j3d_point(x,y,z);
+		point++;
 	}
 	
+	/**
+	 * Returns a bounding j3d_cube
+	 * @return
+	 */
 	public j3d_cube getBounds3D(){
 		j3d_cube c;
-		java.util.Iterator<j3d_point> i = points.iterator();
 		int maxX,maxY,maxZ,minX,minY,minZ;
 		
 		maxX=maxY=maxZ=minX=minY=minZ=0;
 		
 		boolean bFirst = true;
-		while(i.hasNext()){
-			j3d_point p = i.next();
+		for(int i=0; i<points.length; i++){
+			j3d_point p = points[i];
 			if(bFirst){
 				maxX=minX=p.x;
 				maxY=minY=p.y;
@@ -65,6 +72,10 @@ public class j3d_polygon extends Polygon {
 	 * @param p j3d_point
 	 */
 	public void addPoint(j3d_point p){
-		points.add(p);
+		if(point == points.length-1) return;
+		
+		points[point] = p;
+		point++;
 	}
+	
 }
