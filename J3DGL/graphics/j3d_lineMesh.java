@@ -1,6 +1,6 @@
 package graphics;
 
-public class lineMesh {
+public class j3d_lineMesh {
 	private java.util.LinkedList<j3d_line> lines;
 	
 	/**
@@ -8,7 +8,7 @@ public class lineMesh {
 	 * It allows the creation of complete objects that don't necessarily have all
 	 * the lines connected throughout the object.
 	 */
-	public lineMesh(){
+	public j3d_lineMesh(){
 		lines = new java.util.LinkedList<j3d_line>();
 	}
 	
@@ -42,5 +42,13 @@ public class lineMesh {
 	public void addLine(int x1, int y1, int z1, int x2, int y2, int z2){
 		j3d_line l = new j3d_line(new j3d_point(x1,y1,z1), new j3d_point(x2,y2,z2));
 		lines.add(l);
+	}
+	
+	/**
+	 * Gets all the lines of the mesh in an array
+	 * @return
+	 */
+	public j3d_line[] getLines(){
+		return this.lines.toArray(new j3d_line[0]);
 	}
 }
