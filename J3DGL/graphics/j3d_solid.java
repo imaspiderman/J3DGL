@@ -11,6 +11,7 @@ public class j3d_solid {
 	private j3d_vector speed;
 	private j3d_vector worldScale;
 	private j3d_vector scale;
+	private j3d_point rootPoint;
 	
 	public j3d_solid(){
 		this.worldPosition = new j3d_vector(0,0,0);
@@ -23,6 +24,15 @@ public class j3d_solid {
 		this.speed = new j3d_vector(0,0,0);
 		this.worldScale = new j3d_vector(0,0,0);
 		this.scale = new j3d_vector(0,0,0);
+		this.rootPoint = new j3d_point(0,0,0);
+	}
+
+	public j3d_point getRootPoint() {
+		return rootPoint;
+	}
+
+	public void setRootPoint(j3d_point rootPoint) {
+		this.rootPoint = rootPoint;
 	}
 
 	public j3d_vector getWorldPosition() {
