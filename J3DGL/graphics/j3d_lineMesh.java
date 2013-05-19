@@ -2,6 +2,7 @@ package graphics;
 
 public class j3d_lineMesh extends j3d_solid{
 	private java.util.LinkedList<j3d_line> lines;
+	private j3d_point rootPoint;
 	
 	/**
 	 * This mesh is used for objects that will be in wire frame form only
@@ -11,8 +12,25 @@ public class j3d_lineMesh extends j3d_solid{
 	public j3d_lineMesh(){
 		super();
 		lines = new java.util.LinkedList<j3d_line>();
+		this.rootPoint = new j3d_point(0,0,0);
 	}
 	
+	/**
+	 * Point by which all transformations are calculated
+	 * @return
+	 */
+	public j3d_point getRootPoint() {
+		return rootPoint;
+	}
+
+	/**
+	 * Point by which all transformations are calculated
+	 * @return
+	 */
+	public void setRootPoint(j3d_point rootPoint) {
+		this.rootPoint = rootPoint;
+	}
+
 	/**
 	 * Adds a new j3d_line to the mesh
 	 * @param l
