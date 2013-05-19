@@ -1,6 +1,6 @@
 package graphics;
 
-public class j3d_lineMesh {
+public class j3d_lineMesh extends j3d_solid{
 	private java.util.LinkedList<j3d_line> lines;
 	
 	/**
@@ -9,6 +9,7 @@ public class j3d_lineMesh {
 	 * the lines connected throughout the object.
 	 */
 	public j3d_lineMesh(){
+		super();
 		lines = new java.util.LinkedList<j3d_line>();
 	}
 	
