@@ -112,6 +112,27 @@ public class j3d_point extends java.awt.Point {
 			throw new java.lang.UnsupportedOperationException();
 		}catch(Exception ex){}
 	}
+	/***
+	 * Gets the X value in Non Fixed Point
+	 * @return
+	 */
+	public int getIntX(){
+		return (this.x >> j3d_globals.FIXED_POINT_SHITFT);
+	}
+	/***
+	 * Gets the Y value in Non Fixed Point
+	 * @return
+	 */
+	public int getIntY(){
+		return (this.y >> j3d_globals.FIXED_POINT_SHITFT);
+	}
+	/***
+	 * Gets the Z value in Non Fixed Point
+	 * @return
+	 */
+	public int getIntZ(){
+		return (this.z >> j3d_globals.FIXED_POINT_SHITFT);
+	}
 	
 	
 }

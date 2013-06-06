@@ -143,7 +143,7 @@ public class j3d_calc {
 	 * @param lines The array of lines to translate
 	 * @return New array of translated lines
 	 */
-	public static j3d_line[] translate(j3d_vector translate, j3d_line[] lines){
+	public static j3d_line[] translate(j3d_point translate, j3d_line[] lines){
 		j3d_line[] newArray = new j3d_line[lines.length];
 		for(int i=0; i<lines.length; i++){
 			j3d_point p1,p2;
