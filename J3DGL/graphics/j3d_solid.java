@@ -17,7 +17,7 @@ public class j3d_solid {
 		this.rotation = new j3d_vector(0,0,0);
 		this.worldSpeed = new j3d_vector(0,0,0);
 		this.speed = new j3d_vector(0,0,0);
-		this.worldScale = new j3d_vector(0,0,0);
+		this.worldScale = new j3d_vector(1,1,1);
 		this.scale = new j3d_vector(0,0,0);
 	}
 

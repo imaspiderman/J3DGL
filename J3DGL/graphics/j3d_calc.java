@@ -76,7 +76,9 @@ public class j3d_calc {
 	 * @return Fixed point integer
 	 */
 	public static int multiply(int i1, int i2){		
-		return (i1*i2)>>j3d_globals.FIXED_POINT_SHITFT;
+		long l1 = i1;
+		long l2 = i2;
+		return (int)((l1*l2)>>j3d_globals.FIXED_POINT_SHITFT);
 	}
 	
 	/**
@@ -88,9 +90,9 @@ public class j3d_calc {
 	public static j3d_point multiply(j3d_point p1, j3d_point p2){
 		j3d_point r = new j3d_point();
 		
-		r.x = (p1.x * p2.x)>>j3d_globals.FIXED_POINT_SHITFT;
-		r.y = (p1.y * p2.y)>>j3d_globals.FIXED_POINT_SHITFT;
-		r.z = (p1.z * p2.z)>>j3d_globals.FIXED_POINT_SHITFT;
+		r.x = multiply(p1.x,p2.x);
+		r.y = multiply(p1.y,p2.y);
+		r.z = multiply(p1.z,p2.z);
 		
 		return r;
 	}
@@ -103,9 +105,9 @@ public class j3d_calc {
 	 */
 	public static j3d_vector multiply(j3d_vector v1, j3d_vector v2){
 		j3d_vector r = new j3d_vector(
-					(v1.x * v2.x)>>j3d_globals.FIXED_POINT_SHITFT,
-					(v1.y * v2.y)>>j3d_globals.FIXED_POINT_SHITFT,
-					(v1.z * v2.z)>>j3d_globals.FIXED_POINT_SHITFT
+					multiply(v1.x,v2.x),
+					multiply(v1.y,v2.y),
+					multiply(v1.z,v2.z)
 				);
 		return r;
 	}
@@ -117,7 +119,9 @@ public class j3d_calc {
 	 * @return Fixed point integer
 	 */
 	public static int divide(int i1, int i2){
-		return((i1<<j3d_globals.FIXED_POINT_SHITFT)/i2);
+		long l1 = i1;
+		long l2 = i2;
+		return (int)((l1<<j3d_globals.FIXED_POINT_SHITFT)/l2);
 	}
 	
 	/**
