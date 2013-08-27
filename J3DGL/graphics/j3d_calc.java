@@ -120,8 +120,8 @@ public class j3d_calc {
 	 */
 	public static int divide(int i1, int i2){
 		long l1 = i1;
-		long l2 = i2;
-		return (int)((l1<<j3d_globals.FIXED_POINT_SHITFT)/l2);
+		long l2 = i2 >> j3d_globals.FIXED_POINT_SHITFT;
+		return (int)((l1)/((l2==0)?(1):(l2)));
 	}
 	
 	/**
@@ -311,7 +311,7 @@ public class j3d_calc {
 	 * @return New array of rotated lines.
 	 */
 	public static j3d_line[] rotateAllAxis(int xDegrees, int yDegrees, int zDegrees, j3d_line[] lines){
-		j3d_line[] newArray;
+		j3d_line[] newArray = new j3d_line[lines.length];
 		
 		newArray = j3d_calc.rotateXAxis(xDegrees, lines);
 		newArray = j3d_calc.rotateYAxis(yDegrees, newArray);
