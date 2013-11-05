@@ -21,22 +21,20 @@ public class TestProgram {
 		m.addLine(50,0,0,50,50,0);
 		m.addLine(50,0,50,50,50,50);
 		
-		m.setWorldPosition(new j3d_point(0,0,0));
-		m.setRootPoint(new j3d_point(25,25,25));
-		cam.setWorldPosition(new j3d_vector(0,0,-10));
+		m.setWorldPosition(new j3d_point(-25,-25,0));
+		cam.setWorldPosition(new j3d_vector(0,0,0));
 		
 		c.setVisible(true);
-		j3d_vector up = new j3d_vector(1,1,1);
-		j3d_vector down = new j3d_vector(-1,-1,-1);
+		j3d_vector up = new j3d_vector(0,0,1);
+		j3d_vector down = new j3d_vector(0,0,-1);
 		m.setPosition(up);
-		m.setRotation(new j3d_vector(1,1,1));
-		m.setWorldScale(new j3d_vector(2,2,2));
+		m.setWorldScale(new j3d_vector(5,5,2));
 		while(true){
 			c.clearCanvas();
 			c.renderMesh(m, cam);
 			moveMesh(m);
-			if(m.getWorldPosition().getIntY() > 100) m.setPosition(down);
-			if(m.getWorldPosition().getIntY() < -100) m.setPosition(up);
+			if(m.getWorldPosition().getIntZ() > 100) m.setPosition(down);
+			if(m.getWorldPosition().getIntZ() < -100) m.setPosition(up);
 		}
 	}
 	

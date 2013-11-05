@@ -41,6 +41,9 @@ public class j3d_canvas extends Frame {
 		int sy1;
 		int sy2;
 		for(int i=0; i<lines.length; i++){
+			if(lines[i].getPoints()[0].z <= 0 && lines[i].getPoints()[1].z <= 0) continue;
+			if(lines[i].getPoints()[0].z <= 0) lines[i].getPoints()[0].z = 1;
+			if(lines[i].getPoints()[1].z <= 0) lines[i].getPoints()[1].z = 1;
 			sx1 = j3d_calc.divide(
 					j3d_calc.multiply(lines[i].getPoints()[0].x,c.getEyeDistance()),
 					(c.getEyeDistance() + lines[i].getPoints()[0].z)
@@ -59,6 +62,7 @@ public class j3d_canvas extends Frame {
 					) + ((this.getHeight()>>1)<<j3d_globals.FIXED_POINT_SHITFT)>>j3d_globals.FIXED_POINT_SHITFT;
 			Graphics2D g = (Graphics2D)this._screen.getGraphics();
 			g.setColor(Color.white);
+			g.setClip(0, 0, _screen.getWidth(), _screen.getHeight());
 			g.drawLine(sx1, sy1, sx2, sy2);
 		}
 		this.getGraphics().drawImage(_screen, 0, 0, null);
